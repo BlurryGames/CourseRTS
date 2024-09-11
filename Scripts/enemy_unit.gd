@@ -2,8 +2,6 @@ class_name EnemyUnit extends Unit
 
 @export var detect_range: float = 100.0
 
-@onready var game_manager: GameManager = get_node(^"/root/Main")
-
 func _process(delta: float) -> void:
 	if not target:
 		for p: PlayerUnit in game_manager.players:

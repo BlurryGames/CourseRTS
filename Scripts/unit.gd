@@ -16,8 +16,9 @@ var target: Unit = null
 @onready var agent: NavigationAgent2D = %NavigationAgent2D
 @onready var sprite: Sprite2D = %Sprite2D
 
+@onready var game_manager: GameManager = get_node(^"/root/Main")
+
 func _ready() -> void:
-	var game_manager: GameManager = get_node(^"/root/Main")
 	if is_player:
 		game_manager.players.append(self)
 	else:
