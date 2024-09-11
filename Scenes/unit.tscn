@@ -19,3 +19,6 @@ shape = SubResource("RectangleShape2D_wu03h")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+path_desired_distance = 1.0
+target_desired_distance = 1.0
+path_max_distance = 10.0

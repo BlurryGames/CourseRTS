@@ -41,13 +41,15 @@ func take_damage(damage_to_take: int) -> void:
 		queue_free()
 
 func _target_check() -> void:
-	if target:
-		var distance: float = get_global_position().distance_to(target.get_global_position())
-		if distance <= attack_range:
-			agent.set_target_position(get_global_position())
-			_try_attack_target()
-		else:
-			agent.set_target_position(target.get_global_position())
+	if not target:
+		return
+	
+	var distance: float = get_global_position().distance_to(target.get_global_position())
+	if distance <= attack_range:
+		agent.set_target_position(get_global_position())
+		_try_attack_target()
+	else:
+		agent.set_target_position(target.get_global_position())
 
 func _try_attack_target() -> void:
 	var current_time: float = Time.get_unix_time_from_system()

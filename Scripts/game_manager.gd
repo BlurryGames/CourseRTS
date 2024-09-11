@@ -14,8 +14,8 @@ func _input(event: InputEvent) -> void:
 		elif index == MOUSE_BUTTON_RIGHT:
 			_try_command_unit()
 
-func _get_selected_unit() -> PlayerUnit:
-	var unit: PlayerUnit = null
+func _get_selected_unit() -> Unit:
+	var unit: Unit = null
 	
 	var space: PhysicsDirectSpaceState2D = get_world_2d().get_direct_space_state()
 	var query := PhysicsPointQueryParameters2D.new()
@@ -27,20 +27,30 @@ func _get_selected_unit() -> PlayerUnit:
 	
 	return unit
 
-func _select_unit(unit: PlayerUnit) -> void:
+func _select_unit(unit: Unit) -> void:
 	_unselect_unit()
 	selected_unit = unit
 	selected_unit.toggle_selection_visual(true)
 
 func _try_select_unit() -> void:
-	var unit: PlayerUnit = _get_selected_unit()
+	var unit: Unit = _get_selected_unit()
 	if unit and unit.is_player:
 		_select_unit(unit)
 	else:
 		_unselect_unit()
 
 func _try_command_unit() -> void:
-	pass
+	if not selected_unit:
+		return
+	
+	var target: Unit = _get_selected_unit()
+	if target and not target.is_player:
+		selected_unit.set_target(target)
+	else:
+		selected_unit.move_to_location(get_global_mouse_position())
 
 func _unselect_unit() -> void:
-	pass
+	if selected_unit:
+		selected_unit.toggle_selection_visual(false)
+	
+	selected_unit = null

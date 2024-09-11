@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1bl758bxli8d"]
+[gd_scene load_steps=9 format=3 uid="uid://b1bl758bxli8d"]
 
 [ext_resource type="Texture2D" uid="uid://dgblcpjuatep2" path="res://Art/Sprites/tilemap.png" id="1_22au8"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_scd20"]
 [ext_resource type="PackedScene" uid="uid://cfmti4ot5tw5n" path="res://Scenes/player_unit.tscn" id="2_ixwrf"]
 [ext_resource type="PackedScene" uid="uid://btjr8efd1nu5y" path="res://Scenes/enemy_unit.tscn" id="3_wdx5w"]
 
@@ -144,18 +145,19 @@ separation = Vector2i(1, 1)
 sources/0 = SubResource("TileSetAtlasSource_8knn8")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8n85l"]
-vertices = PackedVector2Array(-1, -96, -1, -33, -18, -33, -144, -96, -144, 97, -18, 16, -1, 97, -1, 16)
+vertices = PackedVector2Array(-1, -96, -1, -43, -24, -43, -144, -96, -144, 97, -24, 16, -1, 97, -1, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-144, -96, -144, 97, -1, 97, -1, 16, -18, 16, -18, -33, -1, -33, -1, -96)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-144, -96, -144, 97, -1, 97, -1, 16, -24, 16, -24, -43, -1, -43, -1, -96)])
 agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lhy1i"]
-vertices = PackedVector2Array(16, -32, 0, -31, 0, -96, 144, -96, 144, 98, 15, 17, -1, 97, -1, 17)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, -96, 0, -31, 16, -32, 15, 17, -1, 17, -1, 97, 144, 98, 144, -96)])
+vertices = PackedVector2Array(-1, 97, -1, 17, 24, 18, 144, 98, 144, -96, 24, -43, 0, -96, 0, -43)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -96, 0, -43, 24, -43, 24, 18, -1, 17, -1, 97, 144, 98, 144, -96)])
 agent_radius = 0.0
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_scd20")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_l4kox")
@@ -176,4 +178,4 @@ zoom = Vector2(2.8, 2.8)
 position = Vector2(-61, -3)
 
 [node name="EnemyUnit" parent="." instance=ExtResource("3_wdx5w")]
-position = Vector2(-33, -18)
+position = Vector2(78, -18)
