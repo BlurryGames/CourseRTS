@@ -50,7 +50,7 @@ func _try_command_unit() -> void:
 		selected_unit.move_to_location(get_global_mouse_position())
 
 func _unselect_unit() -> void:
-	if selected_unit:
+	if selected_unit != null:
 		selected_unit.toggle_selection_visual(false)
 	
 	selected_unit = null
