@@ -39,6 +39,10 @@ func take_damage(damage_to_take: int) -> void:
 	health -= damage_to_take
 	if health <= 0:
 		queue_free()
+	
+	sprite.set_modulate(Color.RED)
+	await get_tree().create_timer(0.1).timeout
+	sprite.set_modulate(Color.WHITE)
 
 func _target_check() -> void:
 	if not target:
