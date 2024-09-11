@@ -19,7 +19,7 @@ var target: Unit = null
 func _process(_delta: float) -> void:
 	_target_check()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if agent.is_navigation_finished():
 		return
 	
